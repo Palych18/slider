@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "noEmit": true,
+    "checkJs": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["dom", "ES2022"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "alwaysStrict": true,
+    "isolatedModules": true,
+    "resolveJsonModule": false,
+    "declaration": true,
+  },
+  "include": [
+    "src"
+  ]
+}
