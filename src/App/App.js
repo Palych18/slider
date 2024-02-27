@@ -1,8 +1,10 @@
-import './App.css';
+import classes from './App.module.scss';
+import { Slider } from 'Slider';
 
 export const App = () => {
   return (
-    <div className="App">
+    <div className={classes.app}>
+      <Slider />
     </div>
   );
-}
+};
