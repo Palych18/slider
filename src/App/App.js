@@ -5,7 +5,7 @@ export const App = () => {
   return (
     <div className={'app'}>
       {/* Slider */}
-      <Slider />
+      <Slider slides={[]}/>
     </div>
   );
 };
