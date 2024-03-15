@@ -1,9 +1,5 @@
-type SlideDetails = {
-  id: number,
-  description: string,
-  url: string,
-};
+import { ModPhotoFromAPI } from 'shared/hooks/types';
 
 export type SliderProps = {
-  slides: [] | SlideDetails[],
+  slides: ModPhotoFromAPI[],
 };

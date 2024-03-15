@@ -10,9 +10,15 @@ export type PhotoFromAPI = {
   thumbnailUrl: string;
 };
 
+export type ModPhotoFromAPI = {
+  id: number;
+  description: string;
+  url: string;
+};
+
 export type PhotosState = {
   isPhotosLoading: boolean;
-  photos: [] | PhotoFromAPI[];
+  photos: [] | ModPhotoFromAPI[];
   photosErrorMessage: string;
   getPhotos: (count?: number) => void;
 };

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { API_BASE_URL } from '../config';
 import { partial } from '../utils';
+import { transformPhotos } from '../utils';
 
 /**
  * @typedef {import('./types').PhotoFromAPI} PhotoFromAPI
@@ -35,7 +36,7 @@ const getPhotos = async (set, count) => {
     set(/** @type {SetterCallback} */(state) => ({
       ...state,
       isPhotosLoading: false,
-      photos: photosFromAPI,
+      photos: transformPhotos(photosFromAPI),
       photosErrorMessage: '',
     }));
   } catch (error) {

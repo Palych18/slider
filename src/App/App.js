@@ -10,11 +10,9 @@ export const App = () => {
     photosState.getPhotos(4);
   }, []);
 
-  console.log(photosState.photos);
-
   return (
     <div className={'app'}>
-      <Slider slides={[]} />
+      {photosState.photos.length > 0 && <Slider slides={photosState.photos} />}
     </div>
   );
 };

@@ -13,7 +13,7 @@ import { IconArrowLeft, IconArrowRight } from 'shared';
  */
 
 export const Slider = (props) => {
-  const slidesCount = 4;
+  const slidesCount = props.slides.length;
   const slideWidth = 400;
   const sliderRef = useRef(null);
   const slidesRef = useRef(null);
@@ -26,19 +26,29 @@ export const Slider = (props) => {
   useEffect(() => {
     const /** @type {*} */ slider = sliderRef.current;
 
+    const leftCloneSlideImage = document.createElement('img');
+    leftCloneSlideImage.src = `${props.slides.at(-1)?.url}`;
+    leftCloneSlideImage.alt = `${props.slides.at(-1)?.description}`;
+
     const leftCloneSlide = document.createElement('div');
     leftCloneSlide.id = 'clone-l';
-    leftCloneSlide.innerHTML = '4';
+    leftCloneSlide.innerHTML = '';
     leftCloneSlide.className = classes.clone;
     leftCloneSlide.style.left = `-${slideWidth}px`;
     leftCloneSlide.style.zIndex = '-1';
+    leftCloneSlide.append(leftCloneSlideImage);
+
+    const rightCloneSlideImage = document.createElement('img');
+    rightCloneSlideImage.src = `${props.slides[0]?.url}`;
+    rightCloneSlideImage.alt = `${props.slides[0]?.description}`;
 
     const rightCloneSlide = document.createElement('div');
     rightCloneSlide.id = 'clone-r';
-    rightCloneSlide.innerHTML = '1';
+    rightCloneSlide.innerHTML = '';
     rightCloneSlide.className = classes.clone;
     rightCloneSlide.style.left = `${slideWidth}px`;
     rightCloneSlide.style.zIndex = '-1';
+    leftCloneSlide.append(rightCloneSlideImage);
 
     slider.append(leftCloneSlide, rightCloneSlide);
   }, []);
@@ -148,10 +158,14 @@ export const Slider = (props) => {
         ref={slidesRef}
         style={{ width: `${slideWidth * slidesCount}px` }}
       >
-        <div className={classes.slide}>1</div>
-        <div className={classes.slide}>2</div>
-        <div className={classes.slide}>3</div>
-        <div className={classes.slide}>4</div>
+        {props.slides.map((slide) => (
+          <div className={classes.slide} key={slide.id}>
+            <img
+              src={slide.url}
+              alt={slide.description}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
